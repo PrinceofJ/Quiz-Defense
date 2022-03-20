@@ -4,7 +4,7 @@ var express = require("express");
 var card_1 = require("./card");
 var app = express();
 var port = 3000;
-var activeSet = [new card_1.card("hablo", "i speak"), new card_1.card("说", "i speak")];
+var activeSet = [new card_1["default"]("hablo", "i speak"), new card_1["default"]("说", "i speak")];
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
@@ -14,7 +14,7 @@ app.listen(port, function () {
 function showNext() {
     //activeSet = [new card("hablo", "i speak"), new card("说", "i speak")];
     console.log(activeSet);
-    var displayed = new card_1.card("hablo", "i speak");
+    var displayed = new card_1["default"]("hablo", "i speak");
     document.getElementsByClassName("card")[0].textContent = displayed.Term;
     activeSet = activeSet.slice(1);
     //randomize

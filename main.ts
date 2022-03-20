@@ -51,7 +51,6 @@ function shuffleArray(array) {
 }
 
 function goToMenu(){
-  document.getElementById("card").style.width = "500px";
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
   /*x.style.display = "block";
   x.style.display = "none";*/
