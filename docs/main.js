@@ -1,20 +1,14 @@
-"use strict";
-exports.__esModule = true;
-var express = require("express");
-var card_1 = require("./card");
-var app = express();
-var port = 3000;
-var activeSet = [new card_1["default"]("hablo", "i speak"), new card_1["default"]("说", "i speak")];
-app.get('/', function (req, res) {
-    res.send('Hello World!');
-});
-app.listen(port, function () {
-    console.log("Example app listening on port ".concat(port));
-});
+var card = /** @class */ (function () {
+    function card(Term, Definition) {
+        this.Term = Term;
+        this.Definition = Definition;
+    }
+    return card;
+}());
+var activeSet = [new card("hablo", "i speak"), new card("说", "i speak")];
+var displayed;
 function showNext() {
-    //activeSet = [new card("hablo", "i speak"), new card("说", "i speak")];
-    console.log(activeSet);
-    var displayed = new card_1["default"]("hablo", "i speak");
+    displayed = activeSet[0];
     document.getElementsByClassName("card")[0].textContent = displayed.Term;
     activeSet = activeSet.slice(1);
     //randomize
@@ -22,8 +16,12 @@ function showNext() {
     activeSet.push(displayed);
 }
 function flip() {
-    document.getElementById("card").textContent = activeSet[activeSet.length - 1].Definition;
-    document.getElementById("card").style.backgroundColor = "rgb(50, 255, 50)";
+    if (document.getElementById("card").textContent == displayed.Definition) {
+        document.getElementById("card").textContent = displayed.Term;
+    }
+    else {
+        document.getElementById("card").textContent = displayed.Definition;
+    }
 }
 /* Set the width of the sidebar to 250px and the left margin of the page content to 250px */
 function openNav() {
@@ -44,7 +42,6 @@ function shuffleArray(array) {
     }
 }
 function goToMenu() {
-    document.getElementById("card").style.width = "500px";
     document.getElementsByClassName("card")[0].style.display = "none";
     /*x.style.display = "block";
     x.style.display = "none";*/
@@ -56,3 +53,28 @@ function goToPlaySet() {
     document.getElementsByClassName("card")[0].style.display = "block";
     showNext();
 }
+window.addEventListener("keydown", function (event) {
+    if (event.defaultPrevented) {
+        return; // Do nothing if the event was already processed
+    }
+    switch (event.key) {
+        case "ArrowDown":
+            // code for "down arrow" key press.
+            break;
+        case "ArrowUp":
+            // code for "up arrow" key press.
+            flip();
+            break;
+        case "ArrowLeft":
+            // code for "left arrow" key press.
+            break;
+        case "ArrowRight":
+            // code for "right arrow" key press.
+            showNext();
+            break;
+        default:
+            return; // Quit when this doesn't handle the key event.
+    }
+    // Cancel the default action to avoid it being handled twice
+    event.preventDefault();
+}, true);
