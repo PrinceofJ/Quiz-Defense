@@ -62,14 +62,16 @@ function shuffleArray(array) {
 }
 
 function goToMenu(){
-  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
   /*x.style.display = "block";
   x.style.display = "none";*/
   removeAllChildNodes(container);
 }
 
 function goToSetCreation(){
-  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
   container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
   container.style.setProperty('--grid-cols', "4");
   removeAllChildNodes(container);
@@ -85,6 +87,7 @@ function makeCard(item : card, index : number){
 
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
   showNext();
   removeAllChildNodes(container);
 }
