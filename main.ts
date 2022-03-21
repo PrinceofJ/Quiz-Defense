@@ -79,17 +79,7 @@ function makeCard(item : card, index : number){
   cell.innerText = (index + 1);
   container.appendChild(cell).className = "grid-item";
 }
-function makeRows(rows, cols) {
-  container.style.setProperty('--grid-rows', rows);
-  container.style.setProperty('--grid-cols', cols);
-  for (c = 0; c < (rows * cols); c++) {
-    let cell = document.createElement("div");
-    cell.innerText = (c + 1);
-    container.appendChild(cell).className = "grid-item";
-  };
-};
 
-makeRows(16, 16);
 
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
