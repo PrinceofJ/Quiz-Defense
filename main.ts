@@ -85,11 +85,13 @@ function makeCard(item : card, index : number){
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
   showNext();
-  deleteCardList();
+  removeAllChildNodes(container);
 }
 
-function deleteCardList(){
-  container.children.foreach(container.removeChild)
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+  }
 }
 
 window.addEventListener("keydown", function (event) {
