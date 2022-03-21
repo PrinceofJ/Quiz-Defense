@@ -135,7 +135,9 @@ transform: rotateY(180deg);
 }
 
 .grid-item {
-  padding: 1em;
-  border: 1px solid #ddd;
+  border: 0px;
   text-align: center;
+  background-color:rgb(117, 62, 180);
+  padding: 10px 12px;
+  color: white;
 }

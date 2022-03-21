@@ -69,14 +69,14 @@ function goToMenu(){
 
 function goToSetCreation(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
-  container.style.setProperty('--grid-rows', Math.floor(activeSet.length));
-  container.style.setProperty('--grid-cols', 4);
+  container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
+  container.style.setProperty('--grid-cols', "4");
   activeSet.forEach(makeCard);
 }
 
 function makeCard(item : card, index : number){
   let cell = document.createElement("div");
-  cell.innerText = (index + 1);
+  cell.innerText = "" + (index + 1);
   container.appendChild(cell).className = "grid-item";
 }
 
