@@ -4,6 +4,13 @@ var card = /** @class */ (function () {
         this.Definition = Definition;
         this.Confidence = 0;
     }
+    card.prototype.setConfidence = function (i) {
+        this.Confidence = i;
+        if (this.Confidence > 10)
+            this.Confidence = 10;
+        if (this.Confidence < 0)
+            this.Confidence = 0;
+    };
     return card;
 }());
 var activeSet = [new card("hablar", "to speak"), new card("pensar", "to think"), new card("mirar", "to watch")];
@@ -51,6 +58,22 @@ function goToMenu() {
 }
 function goToSetCreation() {
     document.getElementsByClassName("card")[0].style.display = "none";
+    activeSet.forEach(makeCard);
+}
+function makeCard(item, index) {
+    var temp = document.createElement("HTMLElement");
+    temp.id = "card_" + index;
+    //temp.class = "card_set";
+    temp.style.display = "block";
+    temp.style.margin = "0";
+    temp.style.position = "absolute";
+    temp.style.left = (20 + 20 * index % 4) + "%";
+    temp.style.top = (20 + 20 * index / 4) + "%";
+    temp.style.transform = "translate(-50%, -50%)";
+    temp.style.background = "rgb(210, 216, 218)";
+    temp.style.padding = "200px 220px";
+    temp.textContent = item.Term;
+    //document.appendChild(temp);
 }
 function goToPlaySet() {
     document.getElementsByClassName("card")[0].style.display = "block";
