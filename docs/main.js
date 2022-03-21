@@ -54,23 +54,27 @@ function shuffleArray(array) {
 }
 function goToMenu() {
     document.getElementsByClassName("card")[0].style.display = "none";
+    document.getElementsByClassName("Title")[0].style.display = "block";
     /*x.style.display = "block";
     x.style.display = "none";*/
     removeAllChildNodes(container);
 }
 function goToSetCreation() {
     document.getElementsByClassName("card")[0].style.display = "none";
+    document.getElementsByClassName("Title")[0].style.display = "none";
     container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
     container.style.setProperty('--grid-cols', "4");
+    removeAllChildNodes(container);
     activeSet.forEach(makeCard);
 }
 function makeCard(item, index) {
     var cell = document.createElement("div");
-    cell.innerText = "" + (index + 1);
+    cell.innerText = item.Term + "\n" + item.Definition;
     container.appendChild(cell).className = "grid-item";
 }
 function goToPlaySet() {
     document.getElementsByClassName("card")[0].style.display = "block";
+    document.getElementsByClassName("Title")[0].style.display = "none";
     showNext();
     removeAllChildNodes(container);
 }

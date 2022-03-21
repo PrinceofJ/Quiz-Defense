@@ -1,5 +1,6 @@
 body {
   font-family: "Lato", sans-serif;
+  background-color: rgb(230, 201, 230);
 }
 
 .card {
@@ -8,6 +9,9 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 300px;
+  height: 150px;
+  text-align: center;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-color: rgb(210, 216, 218);
@@ -68,6 +72,7 @@ body {
 #main {
   transition: margin-left .5s;
   padding: 16px;
+  background-color: rgb(233, 211, 196);
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
@@ -138,6 +143,15 @@ transform: rotateY(180deg);
   border: 0px;
   text-align: center;
   background-color:rgb(117, 62, 180);
-  padding: 10px 12px;
+  padding: 15px 18px;
   color: white;
+}
+
+.Title {
+  font-size: 200px;
+  color: rgb(145, 96, 201);
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  padding: 200px 220px;
 }
