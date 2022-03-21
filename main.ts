@@ -65,13 +65,14 @@ function goToMenu(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
   /*x.style.display = "block";
   x.style.display = "none";*/
-  deleteCardList();
+  removeAllChildNodes(container);
 }
 
 function goToSetCreation(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
   container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
   container.style.setProperty('--grid-cols', "4");
+  removeAllChildNodes(container);
   activeSet.forEach(makeCard);
 }
 
