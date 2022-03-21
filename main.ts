@@ -65,16 +65,13 @@ function goToMenu(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
   /*x.style.display = "block";
   x.style.display = "none";*/
+  deleteCardList();
 }
 
 function goToSetCreation(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
   container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
-<<<<<<< HEAD
   container.style.setProperty('--grid-cols', "4");
-=======
-  container.style.setProperty('--grid-cols', "" + 4);
->>>>>>> bc94a3e6131f36fdea1329b940f2b1ea76e4048c
   activeSet.forEach(makeCard);
 }
 
@@ -88,6 +85,7 @@ function makeCard(item : card, index : number){
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
   showNext();
+  deleteCardList();
 }
 
 function deleteCardList(){
