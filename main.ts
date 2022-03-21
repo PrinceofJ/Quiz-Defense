@@ -62,32 +62,35 @@ function shuffleArray(array) {
 }
 
 function goToMenu(){
-  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
   /*x.style.display = "block";
   x.style.display = "none";*/
   removeAllChildNodes(container);
 }
 
 function goToSetCreation(){
-  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
   container.style.setProperty('--grid-rows', "" + Math.floor(activeSet.length));
   container.style.setProperty('--grid-cols', "4");
   removeAllChildNodes(container);
-
-
-  
   activeSet.forEach(makeCard);
+  let cell = document.createElement("div");
+  cell.innerText = "+";
+  container.appendChild(cell).className = "grid-item";
 }
 
 function makeCard(item : card, index : number){
   let cell = document.createElement("div");
-  cell.innerText = "" + (index + 1);
+  cell.innerText = item.Term + "\n" + item.Definition;
   container.appendChild(cell).className = "grid-item";
 }
 
 
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
+  (document.getElementsByClassName("Title") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none";
   showNext();
   removeAllChildNodes(container);
 }
