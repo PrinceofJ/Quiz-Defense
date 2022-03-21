@@ -2,14 +2,17 @@ var card = /** @class */ (function () {
     function card(Term, Definition) {
         this.Term = Term;
         this.Definition = Definition;
+        this.Confidence = 0;
     }
     return card;
 }());
-var activeSet = [new card("hablo", "i speak"), new card("说", "i speak")];
+var activeSet = [new card("hablar", "to speak"), new card("pensar", "to think"), new card("mirar", "to watch")];
 var displayed;
 function showNext() {
     displayed = activeSet[0];
+    console.log(displayed.Confidence);
     document.getElementsByClassName("card")[0].textContent = displayed.Term;
+    document.getElementsByClassName("card")[0].style.backgroundColor = ("rgb( " + (displayed.Confidence * 255 / 10) + "," + (255 - displayed.Confidence * 255 / 10) + ", 0)");
     activeSet = activeSet.slice(1);
     //randomize
     shuffleArray(activeSet);
@@ -67,9 +70,12 @@ window.addEventListener("keydown", function (event) {
             break;
         case "ArrowLeft":
             // code for "left arrow" key press.
+            displayed.Confidence -= 1;
+            showNext();
             break;
         case "ArrowRight":
             // code for "right arrow" key press.
+            displayed.Confidence += 1;
             showNext();
             break;
         default:

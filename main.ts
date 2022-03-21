@@ -1,19 +1,24 @@
 class card {
   public Term : string
   public Definition : string
+  public Confidence : number
 
   constructor(Term : string, Definition : string) {
       this.Term = Term
       this.Definition = Definition
+      this.Confidence = 0
   }
 }
 
-var activeSet : Array<card> = [new card("hablo", "i speak"), new card("说", "i speak")]
+var activeSet : Array<card> = [new card("hablar", "to speak"), new card("pensar", "to think"), new card("mirar", "to watch")]
 var displayed;
 
 function showNext() {
+  
   displayed = activeSet[0];
-  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].textContent = displayed.Term
+  console.log(displayed.Confidence);
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].textContent = displayed.Term;
+  (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.backgroundColor = ("rgb( " + (255 - displayed.Confidence * 255/10) + "," + (displayed.Confidence*255/10) + ", 0)");
   activeSet = activeSet.slice(1)
   //randomize
   shuffleArray(activeSet)
@@ -80,9 +85,12 @@ window.addEventListener("keydown", function (event) {
       break;
     case "ArrowLeft":
       // code for "left arrow" key press.
+      displayed.Confidence -= 1;
+      showNext();
       break;
     case "ArrowRight":
       // code for "right arrow" key press.
+      displayed.Confidence += 1;
       showNext();
       break;
     default:
