@@ -10,7 +10,7 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     background-color: rgb(210, 216, 218);
-    display: block;
+    display: none;
     border: 1;
     color: rgb(51, 33, 33);
     padding: 200px 220px;

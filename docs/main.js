@@ -12,7 +12,7 @@ function showNext() {
     displayed = activeSet[0];
     console.log(displayed.Confidence);
     document.getElementsByClassName("card")[0].textContent = displayed.Term;
-    document.getElementsByClassName("card")[0].style.backgroundColor = ("rgb( " + (displayed.Confidence * 255 / 10) + "," + (255 - displayed.Confidence * 255 / 10) + ", 0)");
+    document.getElementsByClassName("card")[0].style.backgroundColor = ("rgb( " + (255 - displayed.Confidence * 255 / 10) + "," + (displayed.Confidence * 255 / 10) + ", 0)");
     activeSet = activeSet.slice(1);
     //randomize
     shuffleArray(activeSet);
