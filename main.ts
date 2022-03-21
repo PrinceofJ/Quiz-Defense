@@ -16,6 +16,7 @@ class card {
   }
 }
 
+const container = document.getElementById("container");
 var activeSet : Array<card> = [new card("hablar", "to speak"), new card("pensar", "to think"), new card("mirar", "to watch")]
 var displayed;
 
@@ -68,24 +69,27 @@ function goToMenu(){
 
 function goToSetCreation(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "none"
+  container.style.setProperty('--grid-rows', Math.floor(activeSet.length));
+  container.style.setProperty('--grid-cols', 4);
   activeSet.forEach(makeCard);
 }
 
 function makeCard(item : card, index : number){
-  let temp = document.createElement("HTMLElement");
-  temp.id = "card_" + index;
-  //temp.class = "card_set";
-  temp.style.display = "block";
-  temp.style.margin = "0";
-  temp.style.position = "absolute";
-  temp.style.left = (20+20*index%4)+"%";
-  temp.style.top = (20+20*index/4)+"%";
-  temp.style.transform = "translate(-50%, -50%)";
-  temp.style.background = "rgb(210, 216, 218)";
-  temp.style.padding = "200px 220px";
-  temp.textContent = item.Term;
-  //document.appendChild(temp);
+  let cell = document.createElement("div");
+  cell.innerText = (index + 1);
+  container.appendChild(cell).className = "grid-item";
 }
+function makeRows(rows, cols) {
+  container.style.setProperty('--grid-rows', rows);
+  container.style.setProperty('--grid-cols', cols);
+  for (c = 0; c < (rows * cols); c++) {
+    let cell = document.createElement("div");
+    cell.innerText = (c + 1);
+    container.appendChild(cell).className = "grid-item";
+  };
+};
+
+makeRows(16, 16);
 
 function goToPlaySet(){
   (document.getElementsByClassName("card") as HTMLCollectionOf<HTMLElement>)[0].style.display = "block";
