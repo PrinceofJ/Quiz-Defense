@@ -78,7 +78,7 @@ function goToSetCreation(){
 
 function makeCard(item : card, index : number){
   let cell = document.createElement("div");
-  cell.innerText = "" + (index + 1);
+  cell.innerText = item.Term + "\n" + item.Definition;
   container.appendChild(cell).className = "grid-item";
 }
 
