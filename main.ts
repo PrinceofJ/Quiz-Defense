@@ -84,7 +84,7 @@ function makeCard(item : card, index : number){
   temp.style.background = "rgb(210, 216, 218)";
   temp.style.padding = "200px 220px";
   temp.textContent = item.Term;
-  //document.appendChild
+  document.appendChild(temp);
 }
 
 function goToPlaySet(){
